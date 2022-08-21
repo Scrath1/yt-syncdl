@@ -7,10 +7,7 @@ RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o 
 RUN chmod a+rx /usr/local/bin/yt-dlp
 
 # playlist ID environment variable
-ENV YT_PLID="dQw4w9WgXcQ"
-
-RUN echo "Received playlist id:"
-RUN echo ${YT_PLID}
+ENV DL="dQw4w9WgXcQ"
 
 # Create Youtube Download directory
 RUN mkdir /download

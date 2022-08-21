@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add environment variable to cron job
-cd /etc/cron.d && echo YT_PLID=${YT_PLID} > new-cron && cat yt-dlp-cron >> new-cron && mv new-cron yt-dlp-cron
+cd /etc/cron.d && echo DL=${DL} > new-cron && cat yt-dlp-cron >> new-cron && mv new-cron yt-dlp-cron
 
 # Give execution rights on the cron job
 chmod 0644 /etc/cron.d/yt-dlp-cron
