@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+  download-playlist:
+    image: download-playlist
+    container_name: download-yt-playlist
+    environment:
+      - YT_PLID=PL5JK9SjdCJp_xCv3bisBU3o13KRuf-p0D
