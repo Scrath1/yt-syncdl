@@ -19,8 +19,8 @@ jobs:
           name: Build and push
           uses: docker/build-push-action@v3
           with:
-            context: ./
-            file: ./Dockerfile
+            context: ./DownloadPlaylist
+            file: Dockerfile
             builder: ${{ steps.buildx.outputs.name }}
             push: true
             tags: ghcr.io/scrath1/yt-syncdl:latest
