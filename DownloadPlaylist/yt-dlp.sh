@@ -1,20 +1,23 @@
 #!/bin/bash
 
+originalIFS=$IFS
 IFS=','
-for id in ${DL}; do
-    IFS=';' array=($id)
-    echo "==========================================================================="
-    echo "ID: ${array[0]}"
-    echo "Folder: ${array[1]}"
-    echo "yt-dlp options:" ${array[2]}
-    # Workaround since the yt-dlp options cause some kind of formatting issue if used directly
-    echo "/usr/local/bin/yt-dlp ${array[2]} --output \"/download/${array[1]}/%(title)s.%(ext)s\" --download-archive /download/archive.txt -i ${array[0]}" | /bin/bash
-    
-    # Shorten the log if it gets too large
-    echo "Max log lines: ${MAX_LOG_LINES}"
-    tail -n ${MAX_LOG_LINES} /var/log/cron.log > /var/log/tmp.log
-    rm /var/log/cron.log
-    mv /var/log/tmp.log /var/log/cron.log
-    # /usr/local/bin/yt-dlp ${array[2]} --output "/download/${array[1]}/%(title)s.%(ext)s" --download-archive /download/archive.txt -i ${array[0]}
-    chmod -R 777 /download/${array[1]}
+
+for paramString in ${DL}; do
+    echo --------------------------------------
+    id=$(echo "$paramString" | awk -F';' '{print $1}')
+    outputDir=$(echo "$paramString" | awk -F';' '{print $2}')
+    args=$(echo "$paramString" | awk -F';' '{print $3}')
+
+    echo "ID: $id"
+    echo "outputDir: $outputDir"
+    echo "opt. Arguments: $args"
+    echo "/usr/local/bin/yt-dlp ${args} --output \"/download/${outputDir}/%(title)s.%(ext)s\" --download-archive /download/archive.txt -i ${id}" | /bin/bash
+    chmod -R 777 /download/${outputDir}
+    echo --------------------------------------
 done
+
+tail -n ${MAX_LOG_LINES} /var/log/cron.log > /var/log/tmp.log
+rm /var/log/cron.log && mv /var/log/tmp.log /var/log/cron.log
+
+IFS=$originalIFS
