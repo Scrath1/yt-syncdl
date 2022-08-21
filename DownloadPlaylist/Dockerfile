@@ -6,6 +6,10 @@ RUN apt-get update && apt-get -y install cron curl python3 ffmpeg
 RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
 RUN chmod a+rx /usr/local/bin/yt-dlp
 
+# install additional yt-dlp modules
+RUN apt-get install -y --no-install-recommends python3-pip
+RUN python3 -m pip install mutagen
+
 # playlist ID environment variable
 ENV DL="dQw4w9WgXcQ"
 ENV CRON="* * * * *"
