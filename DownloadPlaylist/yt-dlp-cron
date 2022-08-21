@@ -1,1 +1,1 @@
-* * * * * /yt-dlp.sh >> /var/log/cron.log 2>&1
+CRON_TIMING /yt-dlp.sh >> /var/log/cron.log 2>&1

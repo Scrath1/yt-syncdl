@@ -8,6 +8,8 @@ RUN chmod a+rx /usr/local/bin/yt-dlp
 
 # playlist ID environment variable
 ENV DL="dQw4w9WgXcQ"
+ENV CRON="* * * * *"
+ENV TZ="Etc/UTC"
 
 # Create Youtube Download directory
 RUN mkdir /download

@@ -23,4 +23,4 @@ jobs:
             file: ./DownloadPlaylist/Dockerfile
             builder: ${{ steps.buildx.outputs.name }}
             push: true
-            tags: ghcr.io/scrath1/docker-yt-playlist-syncdl:latest
+            tags: ghcr.io/scrath1/yt-syncdl:latest

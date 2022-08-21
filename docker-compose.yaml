@@ -6,6 +6,7 @@ services:
     container_name: download-yt-playlist
     environment:
       - DL="1pOBa1Cf1k8;ExampleWithVideoID;--format bestaudio --extract-audio"
+      - CRON="48 15 * * *"
     volumes:
       - ./download:/download
       - ./log:/var/log/
