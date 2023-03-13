@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   download-playlist:
-    image: download-playlist
+    image: ghcr.io/scrath1/yt-syncdl:latest
     container_name: download-yt-playlist
     environment:
       - DL="1pOBa1Cf1k8;ExampleWithVideoID;--format bestaudio --extract-audio"
