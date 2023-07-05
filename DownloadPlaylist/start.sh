@@ -13,4 +13,4 @@ chmod 0644 /etc/cron.d/yt-dlp-cron
 crontab /etc/cron.d/yt-dlp-cron
 
 # Run cron job
-cron -f -l 2 && tail -f /var/log/cron.log
+cron -l 2 && tail -f /var/log/cron.log
